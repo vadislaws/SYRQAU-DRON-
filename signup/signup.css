@@ -1,0 +1,197 @@
+/* Общие стили */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #1e293b;
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #0f172a;
+    margin-top: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #cbd5e1;
+    background-color: #f1f5f9;
+    color: #1e293b;
+}
+
+input.input-error {
+    border: 2px solid #f43f5e !important;
+    background-color: #fee2e2;
+}
+
+button {
+    background-color: #0284c7;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #0369a1;
+}
+
+/* Таблица дронов */
+#droneList {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#droneList th, #droneList td {
+    border: 1px solid #cbd5e1;
+    padding: 8px;
+    text-align: left;
+}
+
+#droneList th {
+    background-color: #e2e8f0;
+}
+
+/* Кнопка выхода */
+.logout-button {
+    background-color: #ef4444;
+    margin-top: 20px;
+}
+
+.logout-button:hover {
+    background-color: #dc2626;
+}
+
+/* Signup-стили */
+.signup-container {
+    max-width: 400px;
+    margin: 9px;
+    background-color: #1e293b;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    color: white;
+    font-family: sans-serif;
+}
+
+.avatar-preview {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #334155;
+    color: #877cdf;
+    font-size: 28px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+}
+
+.signup-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 14px;
+    border-radius: 6px;
+    border: none;
+    background-color: #334155;
+    color: white;
+}
+
+.password-field {
+    position: relative;
+}
+
+.password-field input {
+    padding-right: 40px;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #94a3b8;
+    font-size: 18px;
+    line-height: 1;
+    user-select: none;
+}
+
+.input-error {
+    border: 2px solid #f43f5e !important;
+    background-color: #4b5563;
+}
+
+.signup-container button[type="submit"] {
+    background-color: #0ea5e9;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.signup-container button[type="submit"]:hover {
+    background-color: #0284c7;
+}
+
+#signupMessage {
+    margin-top: 12px;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    display: none;
+    transition: all 0.3s ease;
+  }
+  
+  #signupMessage.success {
+    background-color: #d1fae5;
+    color: #065f46;
+    border: 1px solid #10b981;
+  }
+  
+  #signupMessage.error {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #ef4444;
+  }
+  
+  .secondary-btn {
+    margin-top: 10px;
+    background-color: transparent;
+    border: none;
+    color: #60a5fa;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Регистрация</title>
+  <link rel="stylesheet" href="signup.css" />
+  <link rel="stylesheet" href="../style.css" />  
+</head>
+<body>
+  <div class="signup-container">
+
+    <!-- Кнопка "Войти" справа сверху -->
+    <button type="button" id="loginRedirectBtn" class="secondary-btn" style="position: absolute; top: 20px; right: 20px;">
+      Уже есть аккаунт? Войти
+    </button>
+
+    <!-- Аватар -->
+    <div class="avatar-preview" id="avatarPreview"></div>
+
+    <!-- Форма -->
+    <form id="signupForm" novalidate>
+      <input type="text" id="lastname" placeholder="Фамилия" />
+      <input type="text" id="firstname" placeholder="Имя" />
+      <input type="date" id="birthdate" />
+      <input type="text" id="phone" placeholder="Телефон +7XXXXXXXXXX" />
+      <input type="text" id="email" placeholder="Email" />
+      <div class="password-field">
+        <input type="password" id="password" placeholder="Пароль" minlength="8" />
+        <span class="toggle-password">⚇</span>
+      </div>
+      <input type="password" id="confirmPassword" placeholder="Повторите пароль" />
+
+      <button type="submit">Зарегистрироваться</button>
+
+      <!-- Сообщение об ошибках -->
+      <div id="signupMessage"></div>
+    </form>
+  </div>
+
+  <script src="signup.js"></script>
+  <script>
+    // Переход на login.html
+    document.getElementById('loginRedirectBtn').addEventListener('click', () => {
+      window.location.href = '../login/login.html';
+    });
+  </script>
+</body>
+</html>

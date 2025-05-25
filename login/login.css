@@ -1,0 +1,99 @@
+/* Общие стили */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #1e293b;
+}
+
+/* Контейнер входа */
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #1e293b;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    color: white;
+    font-family: sans-serif;
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Инпуты */
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 14px;
+    border-radius: 6px;
+    border: none;
+    background-color: #334155;
+    color: white;
+}
+
+.login-container input.input-error {
+    border: 2px solid #f43f5e !important;
+    background-color: #4b5563;
+}
+
+/* Кнопка входа */
+.login-container button[type="submit"] {
+    background-color: #0ea5e9;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.login-container button[type="submit"]:hover {
+    background-color: #0284c7;
+}
+
+/* Сообщения */
+#loginMessage {
+    margin-top: 12px;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+#loginMessage.success {
+    background-color: #d1fae5;
+    color: #065f46;
+    border: 1px solid #10b981;
+}
+
+#loginMessage.error {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #ef4444;
+}
+
+.secondary-btn {
+    margin-top: 14px;
+    background-color: transparent;
+    border: none;
+    color: #60a5fa;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 14px;
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .secondary-btn:hover {
+    color: #3b82f6;
+  }
+  

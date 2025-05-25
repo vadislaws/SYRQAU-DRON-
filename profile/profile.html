@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Профиль</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="profile.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">ŞYRQAU</div>
+    <div class="profile" onclick="window.location.href='../index.html'">Назад</div>
+  </header>
+
+  
+      
+    <main class="profile-container">
+        <div class="profile-header">
+            <div class="avatar-preview" id="avatarPreview"></div>
+            <h2>Профиль пилота</h2>
+        </div>  
+      <form id="profileForm">
+        <label>Фамилия</label>
+        <input type="text" id="lastname" disabled required />
+
+        <label>Имя</label>
+        <input type="text" id="firstname" disabled required />
+
+        <label>Дата рождения</label>
+        <input type="date" id="birthdate" disabled required />
+
+        <label>Телефон</label>
+        <input type="tel" id="phone" disabled required />
+
+        <label>Email</label>
+        <input type="text" id="email" disabled required />
+
+        <div class="form-actions">
+          <button type="button" id="editBtn">Изменить</button>
+          <button type="submit" id="saveBtn" disabled>Сохранить</button>
+        </div>
+      </form>
+      
+      <div id="profileMessage"></div>
+
+      <h2>Зарегистрированные дроны</h2>
+      <table id="droneList">
+        <thead>
+            <tr>
+              <th>Марка</th>
+              <th>Модель</th>
+              <th>Серийный номер</th>
+              <th>Действия</th>
+            </tr>
+          </thead>
+          
+        <tbody id="droneTableBody">
+          <!-- Дроны будут добавляться сюда -->
+        </tbody>
+      </table>
+
+      <h3>Добавить дрон</h3>
+      <form id="droneForm">
+        <input type="text" id="brand" placeholder="Марка" required />
+        <input type="text" id="model" placeholder="Модель" required />
+        <input type="text" id="serial" placeholder="Серийный номер" required />
+        <button type="submit">Добавить</button>
+      </form>
+
+      <button class="logout-button" onclick="logout()">Выйти</button>
+    </main>
+  </div>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+
+  <script src="profile.js"></script>
+</body>
+</html>

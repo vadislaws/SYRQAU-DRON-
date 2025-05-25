@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drone UTM System</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
+</head>
+
+<body>
+  <header>
+    <div class="logo">ŞYRQAU</div>
+    <div class="profile" id="profileBtn">Профиль</div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar compact">
+      <div class="sidebar-item" id="flightsBtn">
+        <i data-lucide="calendar"></i>
+        <span>Полёты</span>
+      </div>
+            
+      <div class="sidebar-item new-flight-btn">
+        <i data-lucide="plus-circle"></i>
+        <span>Новый полёт</span>
+      </div>      
+      <div class="sidebar-item"  id="monitorBtn">
+        <i data-lucide="radar"></i>
+        <span>Мониторинг</span>
+      </div>
+      <div class="sidebar-item">
+        <i data-lucide="file-text"></i>
+        <span>Документы</span>
+      </div>
+      <div class="sidebar-item">
+        <i data-lucide="shield-check"></i>
+        <span>Страхование</span>
+      </div>
+    
+      <!-- ПОМОЩЬ — вынесена в самый низ -->
+      <div class="sidebar-help">
+        <i data-lucide="help-circle"></i>
+        <span>Помощь</span>
+      </div>
+    </aside>
+    
+    <main class="map-container">
+      <div id="map"></div>
+    
+     <!-- ПОГОДА -->
+     <div id="weather-widget" class="weather-widget">
+      <div class="weather-icon-block">
+        <i id="weather-icon" data-lucide="sun" class="lucide-icon"></i>
+        <span><span id="temperature">--</span>°C</span>
+      </div>
+      <div class="wind-block">
+        <i data-lucide="wind" class="lucide-icon"></i>
+        <span><span id="wind">--</span> м/с</span>
+      </div>
+    </div>
+    
+    <div class="map-controls">
+      <!-- Центрировать -->
+      <button id="center-btn" class="mini-button" title="Центрировать на Астану">
+        <i data-lucide="compass"></i>
+      </button>
+    
+      <!-- Стиль карты -->
+      <button id="style-toggle-btn" class="mini-button" title="Сменить стиль карты">
+        <i data-lucide="palette"></i>
+      </button>
+    
+      <!-- Увеличить -->
+      <button id="zoom-in-btn" class="mini-button" title="Приблизить">
+        <i data-lucide="plus"></i>
+      </button>
+    
+      <!-- Уменьшить -->
+      <button id="zoom-out-btn" class="mini-button" title="Отдалить">
+        <i data-lucide="minus"></i>
+      </button>
+    </div>
+    
+    
+    
+
+      
+      
+    
+      <!-- СТИЛИ КАРТЫ -->
+      <div id="style-toggle">
+        <button data-style="mapbox://styles/mapbox/streets-v12">Цветная</button>
+        <button data-style="mapbox://styles/mapbox/light-v11">Ч/Б</button>
+      </div>
+    
+     
+    </main>
+    
+  </div>
+
+  
+<!-- Панель "Полёты" -->
+<div id="flights-panel" class="flight-panel">
+  <div class="flight-panel-header">
+    <h3>Полёты</h3>
+    <button id="flights-panel-close">✖</button>
+  </div>
+
+  <div class="flight-tabs">
+    <button class="flight-tab active" data-tab="active">Активные</button>
+    <button class="flight-tab" data-tab="history">История</button>
+  </div>
+
+  <div id="flights-content" class="flights-content">
+    <p>Загрузка...</p>
+  </div>
+</div>
+
+  
+
+
+<!-- Новый полет: левый сайдбар рядом с основным -->
+<div id="flight-panel" class="flight-panel">
+  <div class="flight-panel-header">
+    <h3>Новый полёт</h3>
+    <button id="flight-panel-close">✖</button>
+  </div>
+
+  <form id="flightForm" novalidate>
+    <label for="flightTitle">Название полёта</label>
+    <input type="text" id="flightTitle" placeholder="Введите название" autocomplete="off">
+
+    <label for="flightPurpose">Цель полёта</label>
+    <input type="text" id="flightPurpose" placeholder="Цель..." autocomplete="off">
+
+    <label for="droneSelect">Выбор БВС (дрон)</label>
+    <select id="droneSelect">
+      <option value="">Выберите дрон</option>
+    </select>
+
+    <label>Диапазон высоты (м)</label>
+    <div class="altitude-inputs">
+      <input type="number" id="minAlt" placeholder="От" min="0">
+      <input type="number" id="maxAlt" placeholder="До" min="0">
+    </div>
+
+    <label>Расписание полёта</label>
+    <div id="schedule-container" class="flight-schedule">
+      <div class="schedule-block">
+        <input type="date" class="flight-day">
+        <input type="time" class="flight-start">
+        <input type="time" class="flight-end">
+        <button type="button" class="remove-schedule">✖</button>
+      </div>
+    </div>
+    <button type="button" id="addScheduleBtn" class="add-schedule">+ Добавить день</button>
+
+    <label>Геометрия полёта</label>
+    <button type="button" id="addGeometry" class="icon-btn">
+      <i data-lucide="route"></i> <span>Задать маршрут</span>
+    </button>
+
+    <div id="flightError" class="form-error" style="display: none;"></div>
+
+    <button type="submit" class="next-btn">Далее →</button>
+  </form>
+</div>
+
+<!-- Панель Мониторинга -->
+<div id="monitor-panel" class="flight-panel">
+  <div class="flight-panel-header">
+    <h3>Мониторинг</h3>
+    <button id="monitor-close">✖</button>
+  </div>
+
+  <div id="monitor-content" class="flights-content">
+    <p>Загрузка доступных полётов...</p>
+  </div>
+</div>
+
+
+<!-- Нижняя панель маршрута -->
+<div id="geo-bar" class="geo-bar" style="display: none;">
+  <button class="geo-btn" data-type="circle" title="Круг"><i data-lucide="circle"></i></button>
+  <button class="geo-btn" data-type="polygon" title="Полигон"><i data-lucide="triangle"></i></button>
+  <button class="geo-btn" data-type="corridor" title="Коридор"><i data-lucide="route"></i></button>
+
+  <input type="number" id="geo-radius" placeholder="Радиус (м)" style="display: none;" />
+  <input type="number" id="geo-width" placeholder="Ширина (м)" style="display: none;" />
+
+  <button id="geo-visual" class="geo-visual" title="Визуальный полет"><i data-lucide="eye-off"></i></button>
+  <button id="geo-done" class="geo-done" style="display: none;"><i data-lucide="check"></i></button>
+  <button id="geo-cancel" class="geo-cancel"><i data-lucide="x"></i></button>
+  <div id="geo-coords" class="geo-coords" style="display: none;"></div>
+</div>
+
+
+
+  <script src="https://unpkg.com/@turf/turf@6.5.0/turf.min.js"></script>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
+  <script src="script.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script> lucide.createIcons(); </script>
+  <div id="toast" class="toast" style="display: none;"></div>
+</body>
+</html>
+
