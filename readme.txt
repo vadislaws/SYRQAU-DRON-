@@ -1,4 +1,4 @@
-zip файлы - части проекта, но не основного сайта
+zip файлы - части проекта, но не основного сайта (https://drive.google.com/drive/folders/1J-Ru8wM7Xia14rmvR9-iKwBpEpL3CaTL?usp=sharing zip который не загрузился internet issues)
 
 Эмуляция видеостриминга с дрона (RTSP + Архивация через Flask)
 
